@@ -26,7 +26,7 @@ by @dora2_yuruyi
 -  For jailbreaking iOS
 
 ### Tools
-- v1.3 Beta 5 release version included
+- v1.4.2 Beta 1 release version included
 
 
 # Thanks to
