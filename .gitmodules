@@ -1,0 +1,6 @@
+[submodule "ios/kernel/sbpwn6"]
+	path = ios/kernel/sbpwn6
+	url = https://github.com/dora2-iOS/sbpwn6
+[submodule "idevice/iPwnder32"]
+	path = idevice/iPwnder32
+	url = https://github.com/dora2-iOS/iPwnder32
