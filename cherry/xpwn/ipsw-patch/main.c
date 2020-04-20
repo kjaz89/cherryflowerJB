@@ -77,14 +77,14 @@ void closeRoot(void* buffer) {
 int main(int argc, char* argv[]) {
 	
     init_libxpwn(&argc, argv);
-
-	Dictionary* info;
+    
+    Dictionary* info;
     Dictionary* info7;
     Dictionary* shsh;
-	Dictionary* firmwarePatches;
-	Dictionary* patchDict;
-	ArrayValue* patchArray;
-	
+    Dictionary* firmwarePatches;
+    Dictionary* patchDict;
+    ArrayValue* patchArray;
+    
     Dictionary* firmwareInject;
     Dictionary* injectDict;
     StringValue* injectFileValue;
@@ -93,47 +93,47 @@ int main(int argc, char* argv[]) {
     Dictionary* baseFWDict;
     StringValue* baseFWFileValue;
     
-	void* buffer;
-	
-	StringValue* actionValue;
-	StringValue* pathValue;
-	
-	StringValue* fileValue;
-	
-	StringValue* patchValue;
-	char* patchPath;
-
-	char* rootFSPathInIPSW;
-	io_func* rootFS;
-	Volume* rootVolume;
-	size_t rootSize;
-	size_t preferredRootSize = 0;
-	size_t preferredRootSizeAdd = 0;
-	size_t minimumRootSize = 0;
-	
-	char* ramdiskFSPathInIPSW;
-	unsigned int ramdiskKey[32];
-	unsigned int ramdiskIV[16];
-	unsigned int* pRamdiskKey = NULL;
-	unsigned int* pRamdiskIV = NULL;
-	io_func* ramdiskFS;
-	Volume* ramdiskVolume;
-	size_t ramdiskGrow = 0;
-
-	Dictionary* manifest = NULL;
-	AbstractFile *manifestFile;
-	char manifestDirty = FALSE;
-	AbstractFile *otaFile = NULL;
+    void* buffer;
+    
+    StringValue* actionValue;
+    StringValue* pathValue;
+    
+    StringValue* fileValue;
+    
+    StringValue* patchValue;
+    char* patchPath;
+    
+    char* rootFSPathInIPSW;
+    io_func* rootFS;
+    Volume* rootVolume;
+    size_t rootSize;
+    size_t preferredRootSize = 0;
+    size_t preferredRootSizeAdd = 0;
+    size_t minimumRootSize = 0;
+    
+    char* ramdiskFSPathInIPSW;
+    unsigned int ramdiskKey[32];
+    unsigned int ramdiskIV[16];
+    unsigned int* pRamdiskKey = NULL;
+    unsigned int* pRamdiskIV = NULL;
+    io_func* ramdiskFS;
+    Volume* ramdiskVolume;
+    size_t ramdiskGrow = 0;
+    
+    Dictionary* manifest = NULL;
+    AbstractFile *manifestFile;
+    char manifestDirty = FALSE;
+    AbstractFile *otaFile = NULL;
     AbstractFile *APFile = NULL;
-	char* updateRamdiskFSPathInIPSW = NULL; 
-
-	int i;
-
-	OutputState* outputState;
+    char* updateRamdiskFSPathInIPSW = NULL;
+    
+    int i;
+    
+    OutputState* outputState;
     char* IPSW7Inject;
     OutputState* output7State;
     char* bundle7Path;
-
+    
     int partitionSize=0;
     int tarInjectSize=0;
     int exploitDiskSize=0;
@@ -147,41 +147,41 @@ int main(int argc, char* argv[]) {
     //size_t origiBootLength;
     //char *origibot;
     
-	char* bundlePath;
+    char* bundlePath;
 #ifdef JB
     char* bundleRoot = "JailbreakBundles/";
 #else
-	char* bundleRoot = "FirmwareBundles/";
+    char* bundleRoot = "FirmwareBundles/";
 #endif
-	int mergePaths;
-	char* outputIPSW;
-
-	void* imageBuffer;	
-	size_t imageSize;
-
-	AbstractFile* bootloader39 = NULL;
-	AbstractFile* bootloader46 = NULL;
-	AbstractFile* applelogo = NULL;
-	AbstractFile* recoverymode = NULL;
+    int mergePaths;
+    char* outputIPSW;
     
-	char noWipe = FALSE;
-	
-	char unlockBaseband = FALSE;
-	char selfDestruct = FALSE;
-	char use39 = FALSE;
-	char use46 = FALSE;
-	char doBootNeuter = FALSE;
+    void* imageBuffer;
+    size_t imageSize;
+    
+    AbstractFile* bootloader39 = NULL;
+    AbstractFile* bootloader46 = NULL;
+    AbstractFile* applelogo = NULL;
+    AbstractFile* recoverymode = NULL;
+    
+    char noWipe = FALSE;
+    
+    char unlockBaseband = FALSE;
+    char selfDestruct = FALSE;
+    char use39 = FALSE;
+    char use46 = FALSE;
+    char doBootNeuter = FALSE;
     char flashNOR = TRUE;
     char doDeRebusAntiquis = FALSE;
-	char updateBB = FALSE;
-	char useMemory = FALSE;
-
-	unsigned int key[32];
-	unsigned int iv[16];
-
-	unsigned int* pKey = NULL;
-	unsigned int* pIV = NULL;
-
+    char updateBB = FALSE;
+    char useMemory = FALSE;
+    
+    unsigned int key[32];
+    unsigned int iv[16];
+    
+    unsigned int* pKey = NULL;
+    unsigned int* pIV = NULL;
+    
     /* build ver */
     int MajorVer = VERSION;
     int MinorVer = NIVERSION;
