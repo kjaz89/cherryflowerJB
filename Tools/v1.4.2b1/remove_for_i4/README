@@ -1,6 +1,0 @@
-
-# disable iBoot exploit for iPhone3,1
-./disable
-
-# re-enable iBoot exploit for iPhone3,1
-./enable
